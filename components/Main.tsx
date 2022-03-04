@@ -46,6 +46,7 @@ const ButtonList = styled.div`
 
 const UserFindBtn = styled.button`
   transition: 0.3s ease-out;
+  background-color: transparent;
   border-radius: 6px;
   border: 1px solid ${({ theme }) => theme.color.second.white};
   font-size: 20px;
