@@ -1,17 +1,21 @@
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import { theme } from '../../styles/theme';
+
+const Header = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <HeadWrapper>
+        <p>PlayGround</p>
+      </HeadWrapper>
+    </ThemeProvider>
+  );
+};
 
 const HeadWrapper = styled.div`
   display: flex;
   height: 50px;
-  background-color: #1f35ff;
+  background-color: ${({ theme }) => theme.color.third.black};
+  color: ${({ theme }) => theme.color.primary.white};
 `;
-
-const Header = () => {
-  return (
-    <HeadWrapper>
-      <p>PlayGround</p>
-    </HeadWrapper>
-  );
-};
 
 export default Header;
