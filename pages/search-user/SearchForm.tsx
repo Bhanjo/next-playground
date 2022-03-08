@@ -1,6 +1,22 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import useUserFind from '../../hooks/useUserFind';
+import UserInfoBox from './UserInfoBox';
+
+export interface IProps {
+  userInfo: {
+    login: string;
+    id: Number;
+    avatar_url: string;
+    html_url: string;
+    followers: Number;
+    following: Number;
+    public_repos: Number;
+    company: string;
+    created_at: string;
+    updated_at: string;
+  };
+}
 
 const SearchForm = () => {
   const [form, setForm] = useState({
@@ -19,8 +35,6 @@ const SearchForm = () => {
     if (!form.userName) alert('유저를 입력해주세요!');
     setUserInfos(form.userName);
   };
-  const gitUserFindUrl = `${process.env.NEXT_PUBLIC_GIIUSER_URL}/${userInfos}`;
-  const { userInfo, error } = useUserFind(gitUserFindUrl);
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,13 +44,17 @@ const SearchForm = () => {
     });
   };
 
+  // git user fetch
+  const gitUserFindUrl = `${process.env.NEXT_PUBLIC_GIIUSER_URL}/${userInfos}`;
+  const { userInfo, error } = useUserFind(gitUserFindUrl);
+
   return (
     <>
       <FormContainer onSubmit={handleSubmit}>
         <input name='userName' value={form.userName} onChange={onChange} />
         <button type='submit'>검색</button>
       </FormContainer>
-      <p>{JSON.stringify(userInfo)}</p>
+      <UserInfoBox {...userInfo} />
     </>
   );
 };
