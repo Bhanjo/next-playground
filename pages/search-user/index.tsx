@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../../styles/theme';
 
-import SearchForm from './searchForm';
+import SearchForm from './SearchForm';
 
 const SearchUser: NextPage = () => {
   return (

@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import useUserFind from '../../hooks/useUserFind';
 
 const SearchForm = () => {
   const [form, setForm] = useState({
     userName: '',
   });
+  const [userInfos, setUserInfos] = useState('');
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({
@@ -15,8 +17,10 @@ const SearchForm = () => {
 
   const onSubmit = (form: { userName: string }) => {
     if (!form.userName) alert('유저를 입력해주세요!');
-    console.log(form);
+    setUserInfos(form.userName);
   };
+  const gitUserFindUrl = `${process.env.NEXT_PUBLIC_GIIUSER_URL}/${userInfos}`;
+  const { userInfo, error } = useUserFind(gitUserFindUrl);
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,21 +31,24 @@ const SearchForm = () => {
   };
 
   return (
-    <FormContainer onSubmit={handleSubmit}>
-      <input name='userName' value={form.userName} onChange={onChange} />
-      <button type='submit'>검색</button>
-    </FormContainer>
+    <>
+      <FormContainer onSubmit={handleSubmit}>
+        <input name='userName' value={form.userName} onChange={onChange} />
+        <button type='submit'>검색</button>
+      </FormContainer>
+      <p>{JSON.stringify(userInfo)}</p>
+    </>
   );
 };
 
 const FormContainer = styled.form`
+  display: flex;
   width: 370px;
   height: 40px;
   background-color: ${({ theme }) => theme.color.primary.white};
   border-radius: 4px;
   border: 1px solid ${({ theme }) => theme.color.second.white};
   margin: 30px auto;
-  display: flex;
   justify-content: space-between;
   button {
     width: 20%;
