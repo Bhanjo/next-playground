@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body{
-    background-color: #ffffff;
+    background-color: #1c1c1c;
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   }
   a {
@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
   input, button {
-    background-color: transparent;
+    /* background-color: transparent; */
     border: none;
     outline: none;
   }
