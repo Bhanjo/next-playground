@@ -12,6 +12,7 @@
     "@types/styled-components": "^5.1.23",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
+    "axios": "^0.26.0",
     "babel-plugin-styled-components": "^2.0.6",
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-import": "^2.25.4",
@@ -23,7 +24,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "styled-components": "^5.3.3",
-    "styled-reset": "^4.3.4"
+    "styled-reset": "^4.3.4",
+    "swr": "^1.2.2"
   },
   "devDependencies": {
     "@types/node": "17.0.21",
