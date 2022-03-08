@@ -32,16 +32,14 @@ const Container = styled.div`
     font-weight: bold;
     font-size: 18px;
   }
-
-  @media screen and (max-width: ${({ theme }) => theme.breakPoint.mobile}) {
-    /* width: 100%; */
-  }
 `;
 
 const ButtonList = styled.div`
-  /* background-color: red; */
+  width: 250px;
   margin: 25px auto;
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const UserFindBtn = styled.button`
