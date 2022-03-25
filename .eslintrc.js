@@ -1,12 +1,12 @@
 module.exports = {
   extends: ['prettier/prettier'],
   plugins: ['react-hooks', 'prettier'],
-  parser: '@babel/eslint-parser',
+  parser: '@typescript-eslint/parser',
   rules: {
     'prettier/prettier': 'error',
     'react-hooks/rules-of-hooks': 'error',
-    'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error',
+    // 'simple-import-sort/imports': 'error',
+    // 'simple-import-sort/exports': 'error',
     'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
     'comma-dangle': ['error', 'always-multiline'],
     'object-curly-spacing': ['error', 'always'],
@@ -16,7 +16,7 @@ module.exports = {
     'eol-last': ['error', 'always'],
     quotes: ['error', 'single'],
     'no-tabs': 'error',
-    semi: ['error', 'never'],
+    // semi: ['error', 'never'],
     'import/no-anonymous-default-export': 0,
     'object-shorthand': 'error',
     'padding-line-between-statements': [
