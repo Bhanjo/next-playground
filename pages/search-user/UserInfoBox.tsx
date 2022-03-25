@@ -1,9 +1,10 @@
 import { IProps } from './SearchForm';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import { theme } from '../../styles/theme';
 
 const UserInfoBox = (userInfo: IProps['userInfo']) => {
   return (
-    <Container>
+    <Container theme={theme}>
       {userInfo.id ? (
         <User>
           <img src={userInfo.avatar_url} />
@@ -27,7 +28,7 @@ const UserInfoBox = (userInfo: IProps['userInfo']) => {
   );
 };
 
-const Container = styled.div`
+const Container = styled(ThemeProvider)`
   width: 80%;
   margin: 0 auto;
   background-color: ${({ theme }) => theme.color.second.black};
