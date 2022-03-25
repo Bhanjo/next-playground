@@ -3,7 +3,7 @@ module.exports = {
   plugins: ['react-hooks', 'prettier'],
   parser: '@typescript-eslint/parser',
   rules: {
-    'prettier/prettier': 'error',
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'react-hooks/rules-of-hooks': 'error',
     // 'simple-import-sort/imports': 'error',
     // 'simple-import-sort/exports': 'error',
