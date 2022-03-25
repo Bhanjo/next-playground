@@ -6,6 +6,7 @@ const Header = () => {
   const routeHome = () => {
     Router.push('/');
   };
+
   return (
     <ThemeProvider theme={theme}>
       <HeadWrapper>

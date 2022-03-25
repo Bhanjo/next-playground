@@ -14,7 +14,7 @@ const useUserFind = (url: string) => {
   return {
     userInfo: data,
     isLoading: !error && !data,
-    error: error,
+    error,
   };
 };
 
