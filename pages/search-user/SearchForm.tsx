@@ -1,5 +1,4 @@
-import styled, { ThemeProvider } from 'styled-components';
-import { theme } from '../../styles/theme';
+import styled from 'styled-components';
 import { useState } from 'react';
 import useUserFind from '../../hooks/useUserFind';
 import UserInfoBox from './UserInfoBox';
@@ -50,13 +49,13 @@ const SearchForm = () => {
   const { userInfo, error } = useUserFind(gitUserFindUrl);
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <FormContainer onSubmit={handleSubmit}>
         <input name='userName' value={form.userName} onChange={onChange} />
         <button type='submit'>검색</button>
       </FormContainer>
       <UserInfoBox {...userInfo} />
-    </ThemeProvider>
+    </>
   );
 };
 

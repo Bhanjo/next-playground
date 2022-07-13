@@ -1,17 +1,14 @@
 import type { NextPage } from 'next';
-import styled, { ThemeProvider } from 'styled-components';
-import { theme } from '../../styles/theme';
+import styled from 'styled-components';
 
 import SearchForm from './SearchForm';
 
 const SearchUser: NextPage = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Container>
-        <h1>GitHub User find</h1>
-        <SearchForm />
-      </Container>
-    </ThemeProvider>
+    <Container>
+      <h1>GitHub User find</h1>
+      <SearchForm />
+    </Container>
   );
 };
 
