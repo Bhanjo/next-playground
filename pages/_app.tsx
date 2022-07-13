@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Header />
+      {/* @ts-expect-error */}
       <Component {...pageProps} />
     </ThemeProvider>
   );

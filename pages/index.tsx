@@ -1,23 +1,39 @@
 import Router from 'next/router';
+import { useState } from 'react';
 import styled from 'styled-components';
+import ConfirmModal from '../components/ConfirmModal';
 
 const Home = () => {
+  const [isModalShow, setIsModalShow] = useState(false);
+  const [isConfirm, setIsConfirm] = useState(false);
+
   const handleRoute = () => {
     Router.push('/search-user');
   };
 
   return (
     <Container>
+      {isModalShow && (
+        <ConfirmModal
+          onClose={() => setIsModalShow(false)}
+          onConfirm={() => setIsConfirm(true)}
+        />
+      )}
       <h1>
         PlayGround <br />
-        Next.js and TypeScript
+        Next.js and TypeScript <br />
+        {isConfirm && '모달 확인을 눌렀습니다!'}
       </h1>
       <ButtonList>
-        <UserFindBtn onClick={handleRoute}>깃허브 유저 검색</UserFindBtn>
+        <CustomBtn onClick={handleRoute}>깃허브 유저 검색</CustomBtn>
+        <CustomBtn type='button' onClick={() => setIsModalShow(!isModalShow)}>
+          모달 팝업
+        </CustomBtn>
       </ButtonList>
     </Container>
   );
 };
+
 const Container = styled.div`
   background-color: ${({ theme }) => theme.color.second.black};
   color: ${({ theme }) => theme.color.primary.white};
@@ -36,9 +52,10 @@ const ButtonList = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 20px;
 `;
 
-const UserFindBtn = styled.button`
+const CustomBtn = styled.button`
   transition: 0.3s ease-out;
   background-color: transparent;
   border-radius: 6px;
