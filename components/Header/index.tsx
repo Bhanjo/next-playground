@@ -1,6 +1,5 @@
 import Router from 'next/router';
-import styled, { ThemeProvider } from 'styled-components';
-import { theme } from '../../styles/theme';
+import styled from 'styled-components';
 
 const Header = () => {
   const routeHome = () => {
@@ -8,11 +7,9 @@ const Header = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <HeadWrapper>
-        <button onClick={routeHome}>PlayGround</button>
-      </HeadWrapper>
-    </ThemeProvider>
+    <HeadWrapper>
+      <button onClick={routeHome}>PlayGround</button>
+    </HeadWrapper>
   );
 };
 

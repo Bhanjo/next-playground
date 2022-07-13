@@ -1,4 +1,10 @@
-import Document, { DocumentContext } from 'next/document';
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -10,6 +16,7 @@ export default class MyDocument extends Document {
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: (App) => (props) =>
+            // @ts-expect-error
             sheet.collectStyles(<App {...props} />),
         });
 
@@ -27,5 +34,19 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal();
     }
+  }
+
+  render() {
+    return (
+      <Html>
+        <Head />
+        <body>
+          {/* portal을 위해 추가 */}
+          <div id='portal' />
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
   }
 }
