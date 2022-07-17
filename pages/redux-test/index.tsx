@@ -1,5 +1,5 @@
 import CounterContainer from '../../containers/CounterContainer';
-import Todos from './Todos';
+import TodosContainer from '../../containers/TodosContainer';
 
 const ReduxTest = () => {
   return (
@@ -7,7 +7,8 @@ const ReduxTest = () => {
       {/* @ts-expect-error */}
       <CounterContainer number={0} />
       <hr />
-      <Todos />
+      {/* @ts-expect-error */}
+      <TodosContainer />
     </div>
   );
 };

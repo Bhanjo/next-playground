@@ -24,7 +24,6 @@ export const toggle = (id: any) => ({
   type: TOGGLE,
   id,
 });
-
 export const remove = (id: any) => ({
   type: REMOVE,
   id,
@@ -62,7 +61,6 @@ function todos(state = initialState, action: any) {
     case TOGGLE:
       return {
         ...state,
-        // state의 todos를 하나씩 순회
         todos: state.todos.map((todo) =>
           // id 일치시 기존 내용 복사 후 done 프로퍼티만 기존 내용에 반대로
           // 불일치면 그대로 리턴
@@ -72,6 +70,7 @@ function todos(state = initialState, action: any) {
     case REMOVE:
       return {
         ...state,
+        // todos: state.todos.map((todo) => console.log(todo, action.id)),
         todos: state.todos.filter((todo) => todo.id !== action.id),
       };
     default:
