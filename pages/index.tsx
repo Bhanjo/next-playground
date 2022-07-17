@@ -7,8 +7,8 @@ const Home = () => {
   const [isModalShow, setIsModalShow] = useState(false);
   const [isConfirm, setIsConfirm] = useState(false);
 
-  const handleRoute = () => {
-    Router.push('/search-user');
+  const handleRoute = (path: string) => {
+    Router.push(`/${path}`);
   };
 
   return (
@@ -25,9 +25,14 @@ const Home = () => {
         {isConfirm && '모달 확인을 눌렀습니다!'}
       </h1>
       <ButtonList>
-        <CustomBtn onClick={handleRoute}>깃허브 유저 검색</CustomBtn>
+        <CustomBtn onClick={() => handleRoute('search-user')}>
+          깃허브 유저 검색
+        </CustomBtn>
         <CustomBtn type='button' onClick={() => setIsModalShow(!isModalShow)}>
           모달 팝업
+        </CustomBtn>
+        <CustomBtn onClick={() => handleRoute('redux-test')}>
+          리덕스 연습
         </CustomBtn>
       </ButtonList>
     </Container>
