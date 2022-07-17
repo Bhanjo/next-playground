@@ -11,6 +11,7 @@
   "dependencies": {
     "@babel/core": "^7.17.8",
     "@reduxjs/toolkit": "^1.8.3",
+    "@types/react-redux": "^7.1.24",
     "@types/styled-components": "^5.1.23",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
@@ -26,6 +27,9 @@
     "prettier": "^2.5.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-redux": "^8.0.2",
+    "redux": "^4.2.0",
+    "redux-typescript": "^1.2.1",
     "styled-components": "^5.3.3",
     "styled-reset": "^4.3.4",
     "swr": "^1.2.2"
