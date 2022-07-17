@@ -44,7 +44,7 @@ const Todos = ({
         <button type='submit'>등록</button>
       </TodoForm>
       <TodoList>
-        {todos.map((todo: any) => (
+        {todos.map((todo: { id: number; done: boolean; text: string }) => (
           <TodoItem
             key={todo.id}
             todo={todo}
