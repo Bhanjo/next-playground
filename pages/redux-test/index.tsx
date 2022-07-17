@@ -1,10 +1,11 @@
-import Counter from './Counter';
+import CounterContainer from '../../containers/CounterContainer';
 import Todos from './Todos';
 
 const ReduxTest = () => {
   return (
     <div>
-      <Counter number={0} />
+      {/* @ts-expect-error */}
+      <CounterContainer number={0} />
       <hr />
       <Todos />
     </div>
