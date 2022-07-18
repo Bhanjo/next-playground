@@ -1,11 +1,15 @@
+import { useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { RootState } from '../../store/modules';
+import { addTodo, removeTodo, toggleTodo } from '../../store/modules/todos';
 
 const TodoItem = ({ todo, onToggle, onRemove }: any) => {
   return (
     <ItemContainer>
       <input
         type='checkbox'
-        id={todo.id}
         onClick={() => onToggle(todo.id)}
         checked={todo.done}
         readOnly
@@ -20,27 +24,39 @@ const TodoItem = ({ todo, onToggle, onRemove }: any) => {
   );
 };
 
-const Todos = ({
-  input,
-  todos,
-  onChangeInput,
-  onInsert,
-  onToggle,
-  onRemove,
-}: any) => {
+const Todos = () => {
+  const dispatch = useDispatch();
+  const todos = useSelector((state: RootState) => state.todos);
+
+  const [inputValue, setInputValue] = useState('');
+
+  // 리듀서에서 payload 객체를 받으므로 파라미터 전달도 객체로 해준다.
+  const onAdd = useCallback(
+    (todoText) => dispatch(addTodo({ text: todoText })),
+    [dispatch],
+  );
+  const onRemove = useCallback(
+    (id) => dispatch(removeTodo({ id })),
+    [dispatch],
+  );
+  const onToggle = useCallback(
+    (id) => dispatch(toggleTodo({ id })),
+    [dispatch],
+  );
+
   // @ts-expect-error
   const onSubmit = (e) => {
     e.preventDefault();
-    onInsert(input);
-    onChangeInput('');
+    onAdd(inputValue);
+    setInputValue('');
   };
 
-  const onChange = (e: any) => onChangeInput(e.target.value);
+  const onChange = (e: any) => setInputValue(e.target.value);
 
   return (
     <Container>
       <TodoForm onSubmit={onSubmit}>
-        <input value={input} onChange={onChange} />
+        <input value={inputValue} onChange={onChange} />
         <button type='submit'>등록</button>
       </TodoForm>
       <TodoList>
