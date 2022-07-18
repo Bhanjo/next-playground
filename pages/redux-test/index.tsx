@@ -1,12 +1,12 @@
 import Counter from './Counter';
-// import TodosContainer from '../../containers/TodosContainer';
+import Todos from './Todos';
 
 const ReduxTest = () => {
   return (
     <div>
       <Counter />
       <hr />
-      {/* <TodosContainer /> */}
+      <Todos />
     </div>
   );
 };

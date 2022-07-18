@@ -3,9 +3,11 @@
 import { AnyAction, CombinedState, combineReducers } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 import counterSlice, { CounterState } from './counter';
+import todoSlice, { TodosState } from './todos';
 
 export type RootState = {
   counter: CounterState;
+  todos: TodosState[];
 };
 
 const rootReducer = (state: any, action: AnyAction): CombinedState<any> => {
@@ -16,6 +18,7 @@ const rootReducer = (state: any, action: AnyAction): CombinedState<any> => {
     default:
       const combinedReducer = combineReducers({
         counter: counterSlice.reducer,
+        todos: todoSlice.reducer,
       });
 
       return combinedReducer(state, action);
