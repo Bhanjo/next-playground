@@ -4,24 +4,17 @@ import GlobalStyle from '../styles/GlobalStyle';
 import Header from '../components/Header';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../styles/theme';
-import { createStore } from 'redux'; // deprecated 됐지만 그냥 쓰기
-import { Provider } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from '../modules';
-
-const store = createStore(rootReducer, composeWithDevTools());
+import { wrapper } from '../store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Header />
-        {/* @ts-expect-error */}
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Header />
+      {/* @ts-expect-error */}
+      <Component {...pageProps} />
+    </ThemeProvider>
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
