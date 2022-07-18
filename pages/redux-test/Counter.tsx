@@ -10,8 +10,11 @@ import {
 
 const Counter = () => {
   const dispatch = useDispatch();
+  // 셀렉터를 통해 어떤 state를 다룰지 결정
   const counter = useSelector((state: RootState) => state.counter.value);
 
+  // 디스패치로 액션 발생, 디스패치는 useCallback으로 최적화 필요
+  // 리렌더링 될 때마다 아래 함수가 새롭게 만들어지기 떄문
   const onIncrease = useCallback(() => {
     dispatch(increase());
   }, [dispatch]);

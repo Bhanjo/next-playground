@@ -44,7 +44,10 @@ const todoSlice = createSlice({
     },
     // 액션 생성자 없음. payload 속성에 바로 할당
     removeTodo: (state, { payload }: PayloadAction<{ id: number }>) => {
-      state.splice(state.findIndex((todo) => todo.id === payload.id));
+      state.splice(
+        state.findIndex((todo) => todo.id === payload.id),
+        1,
+      );
     },
     toggleTodo: (state, { payload }: PayloadAction<{ id: number }>) => {
       const idx = state.findIndex((todo) => todo.id === payload.id);

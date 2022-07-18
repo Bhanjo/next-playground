@@ -24,7 +24,7 @@ const counterSlice = createSlice({
     decrease: (state) => {
       state.value -= 1;
     },
-    // PayloadAction으로 payload에 어떤 데이터를 넣어야 하는지 지정 가능
+    // PayloadAction으로 payload에 어떤 데이터 타입을 넣어야 하는지 지정 가능
     increaseByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload;
     },
