@@ -1,15 +1,32 @@
+import { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { RootState } from '../../store/modules';
+import {
+  increase,
+  decrease,
+  increaseByAmount,
+} from '../../store/modules/counter';
 
-type Props = {
-  number: number;
-  onIncrease?: () => void;
-  onDecrease?: () => void;
-};
+const Counter = () => {
+  const dispatch = useDispatch();
+  const counter = useSelector((state: RootState) => state.counter.value);
 
-const Counter = ({ number = 0, onIncrease, onDecrease }: Props) => {
+  const onIncrease = useCallback(() => {
+    dispatch(increase());
+  }, [dispatch]);
+
+  const onDecrease = useCallback(() => {
+    dispatch(decrease());
+  }, [dispatch]);
+
+  const onIncreaseAmount = useCallback(() => {
+    dispatch(increaseByAmount(Math.floor(Math.random() * 100)));
+  }, [dispatch]);
+
   return (
     <div>
-      <CounterText>{number}</CounterText>
+      <CounterText>{counter}</CounterText>
       <br />
       <div>
         <Btn type='button' onClick={onIncrease}>
@@ -17,6 +34,9 @@ const Counter = ({ number = 0, onIncrease, onDecrease }: Props) => {
         </Btn>
         <Btn type='button' onClick={onDecrease}>
           -1
+        </Btn>
+        <Btn type='button' onClick={onIncreaseAmount}>
+          Random
         </Btn>
       </div>
     </div>
